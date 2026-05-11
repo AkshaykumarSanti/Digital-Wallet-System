@@ -63,7 +63,7 @@ Digital-Wallet-System/
 
 ## 🚀 Future Enhancements
 
-🔐 PIN-based authentication system  
+🔐 PIN-based authentication systems  
 📜 Transaction history viewer  
 🏦 Multiple bank account linking  
 💸 Cashback & rewards system  
