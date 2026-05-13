@@ -147,10 +147,13 @@ while True:
     # EXIT
     elif choice == "5":
 
-        print("\n👋 Exiting Wallet System...")
-        break
+        print("\n👥 Registered Users:\n")
+
+        for user in users:
+            print(user)
 
     # INVALID CHOICE
-    else:
+    elif choice == "6":
 
-        print("\n❌ Invalid Choice")
+        print("\n👋 Exiting Wallet System...")
+        break
