@@ -75,14 +75,21 @@ class User:
         self.name = name
         self.wallet = Wallet(pin)
 
+
+# ================= USERS ================= #
+
 users = {}
 
 users["Akshay"] = User("Akshay", 1234)
 users["Rahul"] = User("Rahul", 5678)
 
+
+# ================= MAIN PROGRAM ================= #
+
 while True:
 
     try:
+
         print("\n====== 💳 DIGITAL WALLET SYSTEM ======")
         print("1. Add Money")
         print("2. Send Money")
@@ -91,69 +98,91 @@ while True:
         print("5. View All Users")
         print("6. Exit")
 
-    choice = input("\nEnter Choice: ")
+        choice = input("\nEnter Choice: ")
 
-    # ADD MONEY
-    if choice == "1":
+        # ================= ADD MONEY ================= #
 
-        amount = int(input("Enter Amount: ₹"))
+        if choice == "1":
 
-        u1.wallet.add_money(amount)
+            name = input("Enter User Name: ")
 
-        print("✅ Money Added Successfully")
+            if name not in users:
+                print("\n❌ User Not Found")
+                continue
 
-    # SEND MONEY
-    elif choice == "2":
+            amount = int(input("Enter Amount: ₹"))
 
-        sender_name = input("Enter Sender Name: ")
-        receiver_name = input("Enter Receiver Name: ")
+            users[name].wallet.add_money(amount)
 
-        if sender_name not in users or receiver_name not in users:
-            print("\n❌ User Not Found")
-        continue
+            print("✅ Money Added Successfully")
 
-        amount = int(input("Enter Amount: ₹"))
-        pin = int(input("Enter PIN: "))
+        # ================= SEND MONEY ================= #
 
-        sender = users[sender_name]
-        receiver = users[receiver_name]
+        elif choice == "2":
 
-        txn = sender.wallet.send_money(sender, receiver, amount, pin)
+            sender_name = input("Enter Sender Name: ")
+            receiver_name = input("Enter Receiver Name: ")
 
-        print(txn)
+            if sender_name not in users or receiver_name not in users:
+                print("\n❌ User Not Found")
+                continue
 
-    # CHECK BALANCE
-    elif choice == "3":
+            amount = int(input("Enter Amount: ₹"))
+            pin = int(input("Enter PIN: "))
 
-        name = input("Enter User Name: ")
+            sender = users[sender_name]
+            receiver = users[receiver_name]
 
-        if name not in users:
-            print("\n❌ User Not Found")
-        continue
+            txn = sender.wallet.send_money(sender, receiver, amount, pin)
 
-        print(f"\n💰 Current Balance: ₹{users[name].wallet.get_balance()}")
+            print(txn)
 
-    # TRANSACTION HISTORY
-    elif choice == "4":
+        # ================= CHECK BALANCE ================= #
 
-        name = input("Enter User Name: ")
+        elif choice == "3":
 
-        if name not in users:
-            print("\n❌ User Not Found")
-        continue
+            name = input("Enter User Name: ")
 
-        users[name].wallet.show_transactions()
+            if name not in users:
+                print("\n❌ User Not Found")
+                continue
 
-    # EXIT
-    elif choice == "5":
+            print(f"\n💰 Current Balance: ₹{users[name].wallet.get_balance()}")
 
-        print("\n👥 Registered Users:\n")
+        # ================= TRANSACTION HISTORY ================= #
 
-        for user in users:
-            print(user)
+        elif choice == "4":
 
-    # INVALID CHOICE
-    elif choice == "6":
+            name = input("Enter User Name: ")
 
-        print("\n👋 Exiting Wallet System...")
-        break
+            if name not in users:
+                print("\n❌ User Not Found")
+                continue
+
+            users[name].wallet.show_transactions()
+
+        # ================= VIEW USERS ================= #
+
+        elif choice == "5":
+
+            print("\n👥 Registered Users:\n")
+
+            for user in users:
+                print(user)
+
+        # ================= EXIT ================= #
+
+        elif choice == "6":
+
+            print("\n👋 Exiting Wallet System...")
+            break
+
+        # ================= INVALID CHOICE ================= #
+
+        else:
+
+            print("\n❌ Invalid Choice")
+
+    except ValueError:
+
+        print("\n⚠️ Invalid Input! Please enter numbers only.")
