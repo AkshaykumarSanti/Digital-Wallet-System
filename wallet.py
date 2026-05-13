@@ -75,20 +75,21 @@ class User:
         self.name = name
         self.wallet = Wallet(pin)
 
+users = {}
 
-# ================= MAIN PROGRAM ================= #
-
-u1 = User("Akshay", 1234)
-u2 = User("Rahul", 5678)
+users["Akshay"] = User("Akshay", 1234)
+users["Rahul"] = User("Rahul", 5678)
 
 while True:
 
-    print("\n====== 💳 DIGITAL WALLET SYSTEM ======")
-    print("1. Add Money")
-    print("2. Send Money")
-    print("3. Check Balance")
-    print("4. Transaction History")
-    print("5. Exit")
+    try:
+        print("\n====== 💳 DIGITAL WALLET SYSTEM ======")
+        print("1. Add Money")
+        print("2. Send Money")
+        print("3. Check Balance")
+        print("4. Transaction History")
+        print("5. View All Users")
+        print("6. Exit")
 
     choice = input("\nEnter Choice: ")
 
@@ -104,22 +105,44 @@ while True:
     # SEND MONEY
     elif choice == "2":
 
+        sender_name = input("Enter Sender Name: ")
+        receiver_name = input("Enter Receiver Name: ")
+
+        if sender_name not in users or receiver_name not in users:
+            print("\n❌ User Not Found")
+        continue
+
         amount = int(input("Enter Amount: ₹"))
         pin = int(input("Enter PIN: "))
 
-        txn = u1.wallet.send_money(u1, u2, amount, pin)
+        sender = users[sender_name]
+        receiver = users[receiver_name]
+
+        txn = sender.wallet.send_money(sender, receiver, amount, pin)
 
         print(txn)
 
     # CHECK BALANCE
     elif choice == "3":
 
-        print(f"\n💰 Current Balance: ₹{u1.wallet.get_balance()}")
+        name = input("Enter User Name: ")
+
+        if name not in users:
+            print("\n❌ User Not Found")
+        continue
+
+        print(f"\n💰 Current Balance: ₹{users[name].wallet.get_balance()}")
 
     # TRANSACTION HISTORY
     elif choice == "4":
 
-        u1.wallet.show_transactions()
+        name = input("Enter User Name: ")
+
+        if name not in users:
+            print("\n❌ User Not Found")
+        continue
+
+        users[name].wallet.show_transactions()
 
     # EXIT
     elif choice == "5":
