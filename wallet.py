@@ -16,35 +16,51 @@ class Wallet:
     def get_balance(self):
         return self.__balance
 
+    def save_transaction_to_file(self, txn):
+
+        with open("transactions.txt", "a") as file:
+
+            file.write(str(txn) + "\n")
+
     def send_money(self, sender, receiver, amount, pin):
 
         txn = Transaction(sender, receiver, amount)
 
+        # Incorrect PIN
         if not self.verify_pin(pin):
 
             txn.status = "FAILED - Incorrect PIN"
+
             self.transactions.append(txn)
+
+            self.save_transaction_to_file(txn)
 
             return txn
 
+        # Successful Transaction
         if self.__balance >= amount:
 
             self.__balance -= amount
+
             receiver.wallet.add_money(amount)
 
             txn.status = "SUCCESS"
 
+        # Insufficient Balance
         else:
 
             txn.status = "FAILED - Insufficient Balance"
 
         self.transactions.append(txn)
 
+        self.save_transaction_to_file(txn)
+
         return txn
 
     def show_transactions(self):
 
         if not self.transactions:
+
             print("\n❌ No Transactions Found")
             return
 
@@ -52,6 +68,28 @@ class Wallet:
 
         for txn in self.transactions:
             print(txn)
+
+    def show_saved_transactions(self):
+
+        try:
+
+            with open("transactions.txt", "r") as file:
+
+                data = file.read()
+
+                if data:
+
+                    print("\n📂 Saved Transactions:\n")
+
+                    print(data)
+
+                else:
+
+                    print("\n❌ No Saved Transactions")
+
+        except FileNotFoundError:
+
+            print("\n❌ Transaction File Not Found")
 
 
 class Transaction:
@@ -95,8 +133,9 @@ while True:
         print("2. Send Money")
         print("3. Check Balance")
         print("4. Transaction History")
-        print("5. View All Users")
-        print("6. Exit")
+        print("5. View Saved Transactions")
+        print("6. View All Users")
+        print("7. Exit")
 
         choice = input("\nEnter Choice: ")
 
@@ -107,6 +146,7 @@ while True:
             name = input("Enter User Name: ")
 
             if name not in users:
+
                 print("\n❌ User Not Found")
                 continue
 
@@ -124,16 +164,23 @@ while True:
             receiver_name = input("Enter Receiver Name: ")
 
             if sender_name not in users or receiver_name not in users:
+
                 print("\n❌ User Not Found")
                 continue
 
             amount = int(input("Enter Amount: ₹"))
+
             pin = int(input("Enter PIN: "))
 
             sender = users[sender_name]
             receiver = users[receiver_name]
 
-            txn = sender.wallet.send_money(sender, receiver, amount, pin)
+            txn = sender.wallet.send_money(
+                sender,
+                receiver,
+                amount,
+                pin
+            )
 
             print(txn)
 
@@ -144,6 +191,7 @@ while True:
             name = input("Enter User Name: ")
 
             if name not in users:
+
                 print("\n❌ User Not Found")
                 continue
 
@@ -156,23 +204,31 @@ while True:
             name = input("Enter User Name: ")
 
             if name not in users:
+
                 print("\n❌ User Not Found")
                 continue
 
             users[name].wallet.show_transactions()
 
-        # ================= VIEW USERS ================= #
+        # ================= SAVED TRANSACTIONS ================= #
 
         elif choice == "5":
+
+            users["Akshay"].wallet.show_saved_transactions()
+
+        # ================= VIEW USERS ================= #
+
+        elif choice == "6":
 
             print("\n👥 Registered Users:\n")
 
             for user in users:
+
                 print(user)
 
         # ================= EXIT ================= #
 
-        elif choice == "6":
+        elif choice == "7":
 
             print("\n👋 Exiting Wallet System...")
             break
