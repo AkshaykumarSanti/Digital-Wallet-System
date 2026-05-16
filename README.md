@@ -5,15 +5,16 @@
 ![OOP](https://img.shields.io/badge/Concepts-OOP-success)
 ![Status](https://img.shields.io/badge/Project-Active-brightgreen)
 ![CLI](https://img.shields.io/badge/Interface-CLI-orange)
+![Storage](https://img.shields.io/badge/Data-Persistent-success)
 
 ---
 
 # 📌 Overview
 
 The **Digital Wallet System** is a Python-based FinTech simulation project inspired by modern UPI payment applications.  
-It demonstrates strong **Object-Oriented Programming (OOP)** concepts while simulating secure wallet operations such as money transfers, PIN authentication, transaction tracking, and multi-user wallet management.
+It demonstrates strong **Object-Oriented Programming (OOP)** concepts while simulating secure wallet operations such as money transfers, PIN authentication, transaction tracking, multi-user management, and persistent transaction storage.
 
-This project focuses on building a **scalable and modular architecture** similar to real-world digital payment systems.
+This project focuses on building a **scalable and modular backend architecture** similar to real-world digital payment systems.
 
 ---
 
@@ -24,11 +25,13 @@ This project focuses on building a **scalable and modular architecture** similar
 🔄 Transfer money between users  
 🔐 PIN-based transaction authentication  
 📊 Transaction status tracking (Success / Failed)  
-📜 Transaction history viewer  
+📜 Live transaction history viewer  
+📂 Persistent transaction storage using file handling  
+💾 Saved transactions remain after restarting the application  
 👥 Dynamic user validation  
 ⚠️ Exception handling using `try-except`  
 🖥️ Interactive CLI-based wallet system  
-🔒 Encapsulated wallet balance for better security  
+🔒 Encapsulated wallet balance & PIN for security  
 🧩 Clean modular class-based architecture  
 
 ---
@@ -43,6 +46,7 @@ This project focuses on building a **scalable and modular architecture** similar
 | ⚡ Method Interaction | Wallet-to-wallet transactions |
 | 📦 Modular Design | Separate responsibilities for each class |
 | ⚠️ Exception Handling | Prevents application crashes |
+| 📂 File Handling | Persistent transaction storage |
 
 ---
 
@@ -51,6 +55,7 @@ This project focuses on building a **scalable and modular architecture** similar
 - 🐍 Python
 - 💡 Object-Oriented Programming
 - 🖥️ CLI (Command Line Interface)
+- 📂 File Handling
 
 ---
 
@@ -60,6 +65,7 @@ This project focuses on building a **scalable and modular architecture** similar
 Digital-Wallet-System/
 │
 ├── wallet.py
+├── transactions.txt
 ├── README.md
 └── future_updates/
 ```
@@ -73,8 +79,8 @@ Digital-Wallet-System/
 - Add Money Feature
 
 ## ✅ Phase 2
-- Send Money Functionality
-- User-to-User Transactions
+- User-to-User Money Transfer
+- Transaction Processing
 
 ## ✅ Phase 3
 - Transaction Class
@@ -93,6 +99,11 @@ Digital-Wallet-System/
 - Exception Handling
 - Dynamic User Validation
 
+## ✅ Phase 7
+- File Handling using Python
+- Persistent Transaction Storage
+- Saved Transaction Viewer
+
 ---
 
 # 🎮 Sample Workflow
@@ -108,6 +119,8 @@ Digital-Wallet-System/
         ↓
 📊 Transaction Status Updated
         ↓
+💾 Transaction Saved Permanently
+        ↓
 📜 View Transaction History
 ```
 
@@ -121,6 +134,7 @@ Digital-Wallet-System/
 🖥️ CLI application development  
 ⚠️ Exception handling & validations  
 👥 Dynamic user management  
+📂 File handling & persistent storage  
 
 ---
 
@@ -130,7 +144,8 @@ This project was developed to:
 - Strengthen Python OOP concepts
 - Simulate a real-world FinTech application
 - Improve backend development skills
-- Practice scalable software design
+- Practice scalable software architecture
+- Learn transaction management systems
 - Build a resume-worthy Python project
 
 ---
@@ -139,10 +154,20 @@ This project was developed to:
 
 🏦 Bank account linking  
 💸 Cashback & rewards system  
-📂 File/database storage  
-📱 GUI or Web version  
 📊 Monthly expense analytics  
-🔔 Notification system  
+📱 GUI or Web version using Flask/Django  
+🗄️ Database integration (MySQL/PostgreSQL)  
+🔔 Notification & email alerts  
+☁️ Cloud deployment  
+
+---
+
+# 📸 Example Transaction Output
+
+```text
+Akshay -> Rahul : ₹300 [SUCCESS]
+Akshay -> Rahul : ₹500 [FAILED - Incorrect PIN]
+```
 
 ---
 
