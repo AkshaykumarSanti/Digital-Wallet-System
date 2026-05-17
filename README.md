@@ -11,10 +11,19 @@
 
 # 📌 Overview
 
-The **Digital Wallet System** is a Python-based FinTech simulation project inspired by modern UPI payment applications.  
-It demonstrates strong **Object-Oriented Programming (OOP)** concepts while simulating secure wallet operations such as money transfers, PIN authentication, transaction tracking, multi-user management, and persistent transaction storage.
+The **Digital Wallet System** is a Python-based FinTech simulation project inspired by modern UPI payment applications.
 
-This project focuses on building a **scalable and modular backend architecture** similar to real-world digital payment systems.
+This project demonstrates strong **Object-Oriented Programming (OOP)** concepts while simulating secure digital wallet operations such as:
+
+- 💰 Wallet balance management
+- 🔄 Money transfers
+- 🔐 PIN authentication
+- 📜 Transaction history
+- 📂 Persistent transaction storage
+- 🏦 Bank account linking
+- 💸 Cashback rewards system
+
+The project is designed with a **modular and scalable architecture** similar to real-world payment systems.
 
 ---
 
@@ -28,6 +37,8 @@ This project focuses on building a **scalable and modular backend architecture**
 📜 Live transaction history viewer  
 📂 Persistent transaction storage using file handling  
 💾 Saved transactions remain after restarting the application  
+🏦 Link bank accounts to users  
+💸 Automatic cashback rewards on successful transactions  
 👥 Dynamic user validation  
 ⚠️ Exception handling using `try-except`  
 🖥️ Interactive CLI-based wallet system  
@@ -41,12 +52,13 @@ This project focuses on building a **scalable and modular backend architecture**
 | Concept | Implementation |
 |---|---|
 | 🔒 Encapsulation | Private wallet balance & PIN |
-| 🏗️ Classes & Objects | User, Wallet, Transaction |
-| 🔗 Composition | User has a Wallet |
+| 🏗️ Classes & Objects | User, Wallet, Transaction, BankAccount |
+| 🔗 Composition | User has Wallet & BankAccount |
 | ⚡ Method Interaction | Wallet-to-wallet transactions |
 | 📦 Modular Design | Separate responsibilities for each class |
 | ⚠️ Exception Handling | Prevents application crashes |
 | 📂 File Handling | Persistent transaction storage |
+| 💸 Business Logic | Cashback reward implementation |
 
 ---
 
@@ -104,6 +116,12 @@ Digital-Wallet-System/
 - Persistent Transaction Storage
 - Saved Transaction Viewer
 
+## ✅ Phase 8
+- 🏦 Bank Account Linking
+- 💸 Cashback Reward System
+- 📊 Bank Account Detail Viewer
+- 🔗 Advanced Multi-Class Architecture
+
 ---
 
 # 🎮 Sample Workflow
@@ -117,11 +135,22 @@ Digital-Wallet-System/
         ↓
 🔐 PIN Verification
         ↓
+💸 Cashback Applied
+        ↓
 📊 Transaction Status Updated
         ↓
 💾 Transaction Saved Permanently
         ↓
 📜 View Transaction History
+```
+
+---
+
+# 📸 Example Transaction Output
+
+```text
+Akshay -> Rahul : ₹300 [SUCCESS]
+Akshay -> Rahul : ₹500 [FAILED - Incorrect PIN]
 ```
 
 ---
@@ -135,12 +164,15 @@ Digital-Wallet-System/
 ⚠️ Exception handling & validations  
 👥 Dynamic user management  
 📂 File handling & persistent storage  
+🏦 Financial transaction simulation  
+💸 Reward & cashback logic implementation  
 
 ---
 
 # 🎯 Project Goal
 
 This project was developed to:
+
 - Strengthen Python OOP concepts
 - Simulate a real-world FinTech application
 - Improve backend development skills
@@ -152,28 +184,20 @@ This project was developed to:
 
 # 🚀 Future Enhancements
 
-🏦 Bank account linking  
-💸 Cashback & rewards system  
-📊 Monthly expense analytics  
-📱 GUI or Web version using Flask/Django  
 🗄️ Database integration (MySQL/PostgreSQL)  
+📱 GUI or Web version using Flask/Django  
+📊 Monthly expense analytics  
 🔔 Notification & email alerts  
 ☁️ Cloud deployment  
-
----
-
-# 📸 Example Transaction Output
-
-```text
-Akshay -> Rahul : ₹300 [SUCCESS]
-Akshay -> Rahul : ₹500 [FAILED - Incorrect PIN]
-```
+🔐 User login authentication system  
+📈 Expense tracking dashboard  
+💳 UPI & QR payment simulation  
 
 ---
 
 # 👨‍💻 Author
 
-### Akshaykumar Santi
+### Akshaykumar Santi  
 💻 Python Developer | CSE Student | Backend & OOP Enthusiast 🚀
 
 ---
