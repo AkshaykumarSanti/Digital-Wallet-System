@@ -119,7 +119,7 @@ Digital-Wallet-System/
 ## ✅ Phase 8
 - 🏦 Bank Account Linking
 - 💸 Cashback Reward System
-- 📊 Bank Account Detail Viewer
+- 📊 Bank Account Detail Viewers
 - 🔗 Advanced Multi-Class Architecture
 
 ---
