@@ -16,6 +16,14 @@ class Wallet:
     def get_balance(self):
         return self.__balance
 
+    def apply_cashback(self, amount):
+
+        cashback = amount * 0.02
+
+        self.__balance += cashback
+
+        print(f"\n💸 Cashback Received: ₹{cashback}")
+
     def save_transaction_to_file(self, txn):
 
         with open("transactions.txt", "a") as file:
@@ -45,6 +53,8 @@ class Wallet:
             receiver.wallet.add_money(amount)
 
             txn.status = "SUCCESS"
+
+            self.apply_cashback(amount)
 
         # Insufficient Balance
         else:
@@ -106,12 +116,38 @@ class Transaction:
         return f"{self.sender} -> {self.receiver} : ₹{self.amount} [{self.status}]"
 
 
+class BankAccount:
+
+    def __init__(self, bank_name, account_number, balance):
+
+        self.bank_name = bank_name
+        self.account_number = account_number
+        self.balance = balance
+
+    def show_bank_details(self):
+
+        print("\n🏦 Bank Name:", self.bank_name)
+        print("🔢 Account Number:", self.account_number)
+        print("💰 Bank Balance: ₹", self.balance)
+
+
 class User:
 
     def __init__(self, name, pin):
 
         self.name = name
         self.wallet = Wallet(pin)
+        self.bank_account = None
+
+    def link_bank_account(self, bank_name, account_number, balance):
+
+        self.bank_account = BankAccount(
+            bank_name,
+            account_number,
+            balance
+        )
+
+        print("\n✅ Bank Account Linked Successfully")
 
 
 # ================= USERS ================= #
@@ -134,8 +170,10 @@ while True:
         print("3. Check Balance")
         print("4. Transaction History")
         print("5. View Saved Transactions")
-        print("6. View All Users")
-        print("7. Exit")
+        print("6. Link Bank Account")
+        print("7. View Bank Details")
+        print("8. View All Users")
+        print("9. Exit")
 
         choice = input("\nEnter Choice: ")
 
@@ -216,9 +254,48 @@ while True:
 
             users["Akshay"].wallet.show_saved_transactions()
 
-        # ================= VIEW USERS ================= #
+        # ================= LINK BANK ACCOUNT ================= #
 
         elif choice == "6":
+
+            name = input("Enter User Name: ")
+
+            if name not in users:
+
+                print("\n❌ User Not Found")
+                continue
+
+            bank_name = input("Enter Bank Name: ")
+            account_number = input("Enter Account Number: ")
+            balance = int(input("Enter Bank Balance: ₹"))
+
+            users[name].link_bank_account(
+                bank_name,
+                account_number,
+                balance
+            )
+
+        # ================= VIEW BANK DETAILS ================= #
+
+        elif choice == "7":
+
+            name = input("Enter User Name: ")
+
+            if name not in users:
+
+                print("\n❌ User Not Found")
+                continue
+
+            if users[name].bank_account is None:
+
+                print("\n❌ No Bank Account Linked")
+                continue
+
+            users[name].bank_account.show_bank_details()
+
+        # ================= VIEW USERS ================= #
+
+        elif choice == "8":
 
             print("\n👥 Registered Users:\n")
 
@@ -228,7 +305,7 @@ while True:
 
         # ================= EXIT ================= #
 
-        elif choice == "7":
+        elif choice == "9":
 
             print("\n👋 Exiting Wallet System...")
             break
