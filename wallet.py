@@ -157,6 +157,8 @@ users = {}
 users["Akshay"] = User("Akshay", 1234)
 users["Rahul"] = User("Rahul", 5678)
 
+current_user = None
+
 
 # ================= MAIN PROGRAM ================= #
 
@@ -165,43 +167,88 @@ while True:
     try:
 
         print("\n====== 💳 DIGITAL WALLET SYSTEM ======")
-        print("1. Add Money")
-        print("2. Send Money")
-        print("3. Check Balance")
-        print("4. Transaction History")
-        print("5. View Saved Transactions")
-        print("6. Link Bank Account")
-        print("7. View Bank Details")
-        print("8. View All Users")
-        print("9. Exit")
+
+        print("1. Register User")
+        print("2. Login")
+        print("3. Add Money")
+        print("4. Send Money")
+        print("5. Check Balance")
+        print("6. Transaction History")
+        print("7. View Saved Transactions")
+        print("8. Link Bank Account")
+        print("9. View Bank Details")
+        print("10. View All Users")
+        print("11. Logout")
+        print("12. Exit")
 
         choice = input("\nEnter Choice: ")
 
-        # ================= ADD MONEY ================= #
+        # ================= REGISTER USER ================= #
 
         if choice == "1":
 
-            name = input("Enter User Name: ")
+            name = input("Create Username: ")
+
+            if name in users:
+
+                print("\n❌ Username Already Exists")
+                continue
+
+            pin = int(input("Create 4-Digit PIN: "))
+
+            users[name] = User(name, pin)
+
+            print("\n✅ User Registered Successfully")
+
+        # ================= LOGIN ================= #
+
+        elif choice == "2":
+
+            name = input("Enter Username: ")
+            pin = int(input("Enter PIN: "))
 
             if name not in users:
 
                 print("\n❌ User Not Found")
                 continue
 
+            if users[name].wallet.verify_pin(pin):
+
+                current_user = users[name]
+
+                print(f"\n✅ Welcome {name}")
+
+            else:
+
+                print("\n❌ Incorrect PIN")
+
+        # ================= ADD MONEY ================= #
+
+        elif choice == "3":
+
+            if current_user is None:
+
+                print("\n❌ Please Login First")
+                continue
+
             amount = int(input("Enter Amount: ₹"))
 
-            users[name].wallet.add_money(amount)
+            current_user.wallet.add_money(amount)
 
             print("✅ Money Added Successfully")
 
         # ================= SEND MONEY ================= #
 
-        elif choice == "2":
+        elif choice == "4":
 
-            sender_name = input("Enter Sender Name: ")
+            if current_user is None:
+
+                print("\n❌ Please Login First")
+                continue
+
             receiver_name = input("Enter Receiver Name: ")
 
-            if sender_name not in users or receiver_name not in users:
+            if receiver_name not in users:
 
                 print("\n❌ User Not Found")
                 continue
@@ -210,7 +257,7 @@ while True:
 
             pin = int(input("Enter PIN: "))
 
-            sender = users[sender_name]
+            sender = current_user
             receiver = users[receiver_name]
 
             txn = sender.wallet.send_money(
@@ -224,52 +271,51 @@ while True:
 
         # ================= CHECK BALANCE ================= #
 
-        elif choice == "3":
+        elif choice == "5":
 
-            name = input("Enter User Name: ")
+            if current_user is None:
 
-            if name not in users:
-
-                print("\n❌ User Not Found")
+                print("\n❌ Please Login First")
                 continue
 
-            print(f"\n💰 Current Balance: ₹{users[name].wallet.get_balance()}")
+            print(f"\n💰 Current Balance: ₹{current_user.wallet.get_balance()}")
 
         # ================= TRANSACTION HISTORY ================= #
 
-        elif choice == "4":
+        elif choice == "6":
 
-            name = input("Enter User Name: ")
+            if current_user is None:
 
-            if name not in users:
-
-                print("\n❌ User Not Found")
+                print("\n❌ Please Login First")
                 continue
 
-            users[name].wallet.show_transactions()
+            current_user.wallet.show_transactions()
 
         # ================= SAVED TRANSACTIONS ================= #
 
-        elif choice == "5":
+        elif choice == "7":
 
-            users["Akshay"].wallet.show_saved_transactions()
+            if current_user is None:
+
+                print("\n❌ Please Login First")
+                continue
+
+            current_user.wallet.show_saved_transactions()
 
         # ================= LINK BANK ACCOUNT ================= #
 
-        elif choice == "6":
+        elif choice == "8":
 
-            name = input("Enter User Name: ")
+            if current_user is None:
 
-            if name not in users:
-
-                print("\n❌ User Not Found")
+                print("\n❌ Please Login First")
                 continue
 
             bank_name = input("Enter Bank Name: ")
             account_number = input("Enter Account Number: ")
             balance = int(input("Enter Bank Balance: ₹"))
 
-            users[name].link_bank_account(
+            current_user.link_bank_account(
                 bank_name,
                 account_number,
                 balance
@@ -277,25 +323,23 @@ while True:
 
         # ================= VIEW BANK DETAILS ================= #
 
-        elif choice == "7":
+        elif choice == "9":
 
-            name = input("Enter User Name: ")
+            if current_user is None:
 
-            if name not in users:
-
-                print("\n❌ User Not Found")
+                print("\n❌ Please Login First")
                 continue
 
-            if users[name].bank_account is None:
+            if current_user.bank_account is None:
 
                 print("\n❌ No Bank Account Linked")
                 continue
 
-            users[name].bank_account.show_bank_details()
+            current_user.bank_account.show_bank_details()
 
         # ================= VIEW USERS ================= #
 
-        elif choice == "8":
+        elif choice == "10":
 
             print("\n👥 Registered Users:\n")
 
@@ -303,9 +347,23 @@ while True:
 
                 print(user)
 
+        # ================= LOGOUT ================= #
+
+        elif choice == "11":
+
+            if current_user is None:
+
+                print("\n❌ No User Logged In")
+
+            else:
+
+                print(f"\n👋 {current_user.name} Logged Out")
+
+                current_user = None
+
         # ================= EXIT ================= #
 
-        elif choice == "9":
+        elif choice == "12":
 
             print("\n👋 Exiting Wallet System...")
             break
