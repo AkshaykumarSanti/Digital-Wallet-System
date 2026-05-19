@@ -5,7 +5,7 @@
 ![OOP](https://img.shields.io/badge/Concepts-OOP-success)
 ![Status](https://img.shields.io/badge/Project-Active-brightgreen)
 ![CLI](https://img.shields.io/badge/Interface-CLI-orange)
-![Storage](https://img.shields.io/badge/Data-Persistent-success)
+![Authentication](https://img.shields.io/badge/Security-PIN%20Authentication-red)
 
 ---
 
@@ -17,33 +17,35 @@ This project demonstrates strong **Object-Oriented Programming (OOP)** concepts 
 
 - 💰 Wallet balance management
 - 🔄 Money transfers
-- 🔐 PIN authentication
-- 📜 Transaction history
+- 🔐 User login authentication
+- 📜 Transaction history tracking
 - 📂 Persistent transaction storage
 - 🏦 Bank account linking
 - 💸 Cashback rewards system
 
-The project is designed with a **modular and scalable architecture** similar to real-world payment systems.
+The application follows a modular and scalable backend architecture similar to real-world fintech systems.
 
 ---
 
 # ✨ Features
 
-✅ Create and manage multiple users  
-💰 Add money securely to wallet  
-🔄 Transfer money between users  
-🔐 PIN-based transaction authentication  
-📊 Transaction status tracking (Success / Failed)  
-📜 Live transaction history viewer  
-📂 Persistent transaction storage using file handling  
-💾 Saved transactions remain after restarting the application  
-🏦 Link bank accounts to users  
-💸 Automatic cashback rewards on successful transactions  
-👥 Dynamic user validation  
-⚠️ Exception handling using `try-except`  
-🖥️ Interactive CLI-based wallet system  
-🔒 Encapsulated wallet balance & PIN for security  
-🧩 Clean modular class-based architecture  
+✅ Dynamic user registration system  
+✅ Secure user login using PIN authentication  
+✅ Session-based wallet access  
+✅ Add money securely to wallet  
+✅ Transfer money between users  
+✅ Cashback rewards on successful transactions  
+✅ Transaction status tracking (Success / Failed)  
+✅ Live transaction history viewer  
+✅ Persistent transaction storage using file handling  
+✅ Saved transactions remain after restarting application  
+✅ Bank account linking support  
+✅ Bank account detail viewer  
+✅ Dynamic user validation  
+✅ Exception handling using `try-except`  
+✅ Interactive CLI-based wallet system  
+✅ Encapsulated wallet balance & PIN security  
+✅ Multi-class modular architecture  
 
 ---
 
@@ -55,17 +57,18 @@ The project is designed with a **modular and scalable architecture** similar to 
 | 🏗️ Classes & Objects | User, Wallet, Transaction, BankAccount |
 | 🔗 Composition | User has Wallet & BankAccount |
 | ⚡ Method Interaction | Wallet-to-wallet transactions |
-| 📦 Modular Design | Separate responsibilities for each class |
-| ⚠️ Exception Handling | Prevents application crashes |
+| 📦 Modular Design | Separate class responsibilities |
+| ⚠️ Exception Handling | Input validation & crash prevention |
 | 📂 File Handling | Persistent transaction storage |
-| 💸 Business Logic | Cashback reward implementation |
+| 🔐 Authentication | Login & session management |
+| 💸 Business Logic | Cashback reward system |
 
 ---
 
 # 🛠️ Tech Stack
 
 - 🐍 Python
-- 💡 Object-Oriented Programming
+- 💡 Object-Oriented Programming (OOP)
 - 🖥️ CLI (Command Line Interface)
 - 📂 File Handling
 
@@ -119,15 +122,24 @@ Digital-Wallet-System/
 ## ✅ Phase 8
 - 🏦 Bank Account Linking
 - 💸 Cashback Reward System
-- 📊 Bank Account Detail Viewers
+- 📊 Bank Account Detail Viewer
 - 🔗 Advanced Multi-Class Architecture
+
+## ✅ Phase 9
+- 🔐 User Login Authentication
+- 👤 Dynamic User Registration
+- 🚪 Logout Functionality
+- 🔒 Protected Wallet Operations
+- 🧠 Session Management
 
 ---
 
 # 🎮 Sample Workflow
 
 ```text
-👤 User Login
+👤 User Registration
+        ↓
+🔐 User Login
         ↓
 💰 Add Money
         ↓
@@ -157,7 +169,7 @@ Akshay -> Rahul : ₹500 [FAILED - Incorrect PIN]
 
 # 🧠 Concepts & Skills Learned
 
-🔐 Secure transaction design  
+🔐 Authentication system implementation  
 ⚡ Python OOP implementation  
 📦 Modular application architecture  
 🖥️ CLI application development  
@@ -166,6 +178,7 @@ Akshay -> Rahul : ₹500 [FAILED - Incorrect PIN]
 📂 File handling & persistent storage  
 🏦 Financial transaction simulation  
 💸 Reward & cashback logic implementation  
+🚪 Session & login management  
 
 ---
 
@@ -177,21 +190,22 @@ This project was developed to:
 - Simulate a real-world FinTech application
 - Improve backend development skills
 - Practice scalable software architecture
-- Learn transaction management systems
+- Learn authentication & transaction systems
 - Build a resume-worthy Python project
 
 ---
 
 # 🚀 Future Enhancements
 
-🗄️ Database integration (MySQL/PostgreSQL)  
+🗄️ SQLite/MySQL database integration  
 📱 GUI or Web version using Flask/Django  
-📊 Monthly expense analytics  
-🔔 Notification & email alerts  
+📊 Expense analytics dashboard  
+📅 Transaction timestamps  
+🔔 Email & SMS notifications  
 ☁️ Cloud deployment  
-🔐 User login authentication system  
-📈 Expense tracking dashboard  
-💳 UPI & QR payment simulation  
+📈 Monthly spending tracker  
+💳 QR payment simulation  
+🧾 Downloadable transaction receipts  
 
 ---
 
