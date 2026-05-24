@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Wallet:
 
     def __init__(self, pin):
@@ -101,6 +103,28 @@ class Wallet:
 
             print("\n❌ Transaction File Not Found")
 
+        def show_analytics(self):
+
+            total_sent = 0
+            successful = 0
+            failed = 0
+
+            for txn in self.transactions:
+
+                if txn.status == "SUCCESS":
+
+                    total_sent += txn.amount
+                    successful += 1
+
+                else:
+
+                    failed += 1
+
+            print("\n📊 EXPENSE ANALYTICS")
+            print(f"💸 Total Amount Sent: ₹{total_sent}")
+            print(f"✅ Successful Transactions: {successful}")
+            print(f"❌ Failed Transactions: {failed}")
+
 
 class Transaction:
 
@@ -111,9 +135,13 @@ class Transaction:
         self.amount = amount
         self.status = "PENDING"
 
+        self.timestamp = datetime.now().strftime(
+            "%d-%m-%Y %H:%M:%S"
+        )
+
     def __str__(self):
 
-        return f"{self.sender} -> {self.receiver} : ₹{self.amount} [{self.status}]"
+        return f"{self.timestamp} | {self.sender} -> {self.receiver} : ₹{self.amount} [{self.status}]"
 
 
 class BankAccount:
@@ -177,9 +205,10 @@ while True:
         print("7. View Saved Transactions")
         print("8. Link Bank Account")
         print("9. View Bank Details")
-        print("10. View All Users")
-        print("11. Logout")
-        print("12. Exit")
+        print("10. Expense Analytics")
+        print("11. View All Users")
+        print("12. Logout")
+        print("13. Exit")
 
         choice = input("\nEnter Choice: ")
 
@@ -338,8 +367,16 @@ while True:
             current_user.bank_account.show_bank_details()
 
         # ================= VIEW USERS ================= #
-
         elif choice == "10":
+
+            if current_user is None:
+
+                print("\n❌ Please Login First")
+                continue
+
+            current_user.wallet.show_analytics()
+
+        elif choice == "11":
 
             print("\n👥 Registered Users:\n")
 
@@ -349,7 +386,7 @@ while True:
 
         # ================= LOGOUT ================= #
 
-        elif choice == "11":
+        elif choice == "12":
 
             if current_user is None:
 
@@ -363,7 +400,7 @@ while True:
 
         # ================= EXIT ================= #
 
-        elif choice == "12":
+        elif choice == "13":
 
             print("\n👋 Exiting Wallet System...")
             break
