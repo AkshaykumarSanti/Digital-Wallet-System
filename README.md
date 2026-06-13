@@ -153,3 +153,214 @@ Transaction Amount: ₹1000
 
 Cashback: ₹20
 
+
+
+Concepts:
+- Business Logic Implementation
+
+
+---
+
+## ✅ Phase 9: Transaction Timestamp
+
+Added transaction time tracking.
+
+Features:
+
+Every transaction stores:
+
+- Date
+- Time
+- Sender
+- Receiver
+- Amount
+- Status
+
+
+Example:
+
+13-06-2026 10:30:20 |
+Akshay -> Rahul :
+₹500 [SUCCESS]
+
+
+
+Concepts:
+- DateTime Handling
+
+
+---
+
+## ✅ Phase 10: Expense Analytics
+
+Added transaction analysis system.
+
+Features:
+
+- Total money sent
+- Successful transactions count
+- Failed transactions count
+
+
+Example:
+
+📊 Expense Analytics
+
+Total Sent: ₹5000
+Successful: 8
+Failed: 2
+
+
+
+Concepts:
+- Data Analysis
+- Statistics
+
+
+---
+
+## ✅ Phase 11: Database Style Persistence & Validation
+
+Improved project reliability.
+
+Features:
+
+- JSON based data storage
+- Permanent user data
+- Permanent transaction records
+- Improved error handling
+- Input validation
+
+
+Files:
+
+users.json
+transactions.json
+
+
+
+Concepts:
+
+- JSON Handling
+- Data Persistence
+- Exception Handling
+- Real-world application structure
+
+
+---
+
+# ⭐ Current Features
+
+## 👤 User System
+
+✔ Register User  
+✔ Login  
+✔ Logout  
+✔ PIN Authentication  
+✔ Multiple Users  
+
+
+---
+
+## 💰 Wallet Operations
+
+✔ Add Money  
+✔ Send Money  
+✔ Check Balance  
+✔ Cashback System  
+
+
+---
+
+## 📜 Transactions
+
+✔ Transaction History  
+✔ Timestamp  
+✔ Status Tracking  
+✔ Persistent Storage  
+
+
+---
+
+## 🏦 Banking
+
+✔ Link Bank Account  
+✔ View Bank Details  
+
+
+---
+
+## 📊 Analytics
+
+✔ Expense Tracking  
+✔ Transaction Reports  
+
+
+---
+
+# 🛠️ Technologies Used
+
+## Programming Language
+
+- Python
+
+
+## Concepts
+
+- Object-Oriented Programming
+- Encapsulation
+- Classes & Objects
+- Exception Handling
+- File Handling
+- JSON Database
+
+
+## Tools
+
+- VS Code
+- Git
+- GitHub
+
+
+---
+
+# 📂 Project Structure
+
+Digital-Wallet-System/
+
+│
+├── wallet.py
+├── database.py
+├── users.json
+├── transactions.json
+└── README.md
+
+
+
+---
+
+# ▶️ How To Run
+
+
+Clone repository:
+
+```bash
+git clone https://github.com/AkshaykumarSanti/Digital-Wallet-System.git
+
+====== 💳 DIGITAL WALLET SYSTEM ======
+
+1. Register User
+2. Login
+3. Add Money
+4. Send Money
+5. Check Balance
+6. Transaction History
+7. View Saved Transactions
+8. Link Bank Account
+9. View Bank Details
+10. Expense Analytics
+11. View All Users
+12. Logout
+13. Exit
+
+
