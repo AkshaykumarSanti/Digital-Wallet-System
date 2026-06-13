@@ -219,25 +219,30 @@ Concepts:
 
 ---
 
-## ✅ Phase 11: Database Style Persistence & Validation
+## ✅ Phase 11: Code Optimization & Error Handling
 
-Improved project reliability.
+Improved project stability and user experience.
 
 Features:
 
-- JSON based data storage
-- Permanent user data
-- Permanent transaction records
-- Improved error handling
+- Fixed indentation and logical errors
+- Improved menu flow
+- Better exception handling
 - Input validation
+- Cleaner transaction management
+- Improved program reliability
+
+Concepts:
+
+- Debugging
+- Code Optimization
+- Error Handling
+- Clean Code Practices
 
 
 Files:
 
-users.json
-transactions.json
-
-
+transactions.txt
 
 Concepts:
 
@@ -328,11 +333,9 @@ Concepts:
 
 Digital-Wallet-System/
 
-│
 ├── wallet.py
-├── database.py
-├── users.json
-├── transactions.json
+├── databse.py
+├── transactions.txt
 └── README.md
 
 
