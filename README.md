@@ -348,10 +348,11 @@ Digital-Wallet-System/
 
 ```bash
 git clone https://github.com/AkshaykumarSanti/Digital-Wallet-System.git
-
+2. Navigate into Project Folder
 cd Digital-Wallet-System
-
+3. Run the Application
 python wallet.py
+4. Application Menu
 
 ====== 💳 DIGITAL WALLET SYSTEM ======
 
@@ -368,5 +369,12 @@ python wallet.py
 11. View All Users
 12. Logout
 13. Exit
+
+Enter the option number and follow the instructions.
+
+Requirements
+Python 3.x
+VS Code
+Git
 
 
