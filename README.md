@@ -149,3 +149,7 @@ Features:
 
 Example:
 
+Transaction Amount: ₹1000
+
+Cashback: ₹20
+
