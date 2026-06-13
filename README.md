@@ -88,3 +88,64 @@ Features:
 - View saved transactions
 
 Storage:
+
+Concepts:
+- File Handling
+- Exception Handling
+
+
+---
+
+## ✅ Phase 6: Bank Account Integration
+
+Added bank linking system.
+
+Features:
+- Link bank account
+- Store bank details
+- View bank information
+
+
+Bank Details:
+
+- Bank Name
+- Account Number
+- Balance
+
+
+Concepts:
+- Class Composition
+
+
+---
+
+## ✅ Phase 7: User Registration & Login System
+
+Implemented complete user management.
+
+Features:
+- Register new users
+- Login system
+- Multiple users support
+- Logout functionality
+
+
+Concepts:
+- Authentication System
+- User Management
+
+
+---
+
+## ✅ Phase 8: Cashback System
+
+Added reward mechanism.
+
+Features:
+
+- Automatic cashback after successful transaction
+- Wallet balance update
+
+
+Example:
+
