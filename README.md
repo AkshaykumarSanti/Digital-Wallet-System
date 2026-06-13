@@ -1,100 +1,90 @@
 # 💳 Digital Wallet System
 
-A Python-based Digital Wallet application built using **Object-Oriented Programming (OOP)** concepts.  
-This project simulates a real-world wallet system with user authentication, money transfer, transaction tracking, bank linking, and expense analytics.
+A Python-based Digital Wallet application developed step-by-step from basic wallet operations to a complete wallet management system.
+
+This project demonstrates real-world software development using **Python, OOP concepts, file handling, authentication, data persistence, and transaction management.**
 
 ---
 
-## 🚀 Features
+# 🚀 Project Evolution (Phase 1 - Phase 11)
 
-### 👤 User Management
-- User Registration
-- User Login Authentication
-- PIN Verification
-- Multiple User Support
-- Logout System
+## ✅ Phase 1: Basic Wallet Creation
 
----
+Implemented the basic wallet structure.
 
-### 💰 Wallet Operations
-- Add Money to Wallet
-- Check Wallet Balance
-- Send Money Between Users
-- Balance Validation
-- Cashback System (2%)
+Features:
+- Create wallet
+- Store balance
+- Add money
+- Check balance
 
----
+Concepts:
+- Classes
+- Objects
+- Basic Python Programming
 
-### 🔐 Security
-- PIN-based Authentication
-- Private Balance & PIN using Encapsulation
-- Invalid Input Handling
-- Transaction Status Tracking
 
 ---
 
-### 📜 Transaction Management
-- Transaction History
-- Transaction Timestamp
-- Success / Failed Transaction Status
-- Persistent Transaction Storage using JSON
+## ✅ Phase 2: Money Transfer System
 
-Transaction details include:
+Added wallet-to-wallet transactions.
 
-- Date & Time
-- Sender
-- Receiver
-- Amount
-- Status
+Features:
+- Send money between users
+- Receiver balance update
+- Sender balance deduction
 
----
+Concepts:
+- Object Interaction
+- Methods
 
-### 🏦 Bank Account Integration
-- Link Bank Account
-- Store Bank Details
-- View Bank Information
 
 ---
 
-### 📊 Expense Analytics
+## ✅ Phase 3: PIN Authentication
 
-Provides:
+Added wallet security.
 
-- Total Amount Sent
-- Successful Transactions Count
-- Failed Transactions Count
+Features:
+- Create PIN
+- Verify PIN before transaction
+- Secure wallet access
 
----
-
-### 💾 Data Persistence
-
-The application stores data permanently using:
-
-- `users.json`
-- `transactions.json`
-
-Data remains available after restarting the application.
-
----
-
-## 🛠️ Technologies Used
-
-### Programming Language
-- Python
-
-### Concepts Implemented
-- Object-Oriented Programming
-- Classes & Objects
+Concepts:
 - Encapsulation
-- File Handling
-- Exception Handling
-- JSON Database Handling
+- Private Variables
 
-### Tools
-- Git
-- GitHub
-- VS Code
 
 ---
 
-## 📂 Project Structure
+## ✅ Phase 4: Transaction Management
+
+Added transaction tracking.
+
+Features:
+- Transaction history
+- Transaction status
+
+Transaction states:
+- SUCCESS
+- FAILED
+- PENDING
+
+
+Concepts:
+- Data Management
+- Object Modeling
+
+
+---
+
+## ✅ Phase 5: File Storage System
+
+Added permanent transaction storage.
+
+Features:
+- Save transactions into file
+- View saved transactions
+
+Storage:
