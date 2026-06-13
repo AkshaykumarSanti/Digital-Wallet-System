@@ -344,11 +344,14 @@ Digital-Wallet-System/
 
 # ▶️ How To Run
 
-
-Clone repository:
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/AkshaykumarSanti/Digital-Wallet-System.git
+
+cd Digital-Wallet-System
+
+python wallet.py
 
 ====== 💳 DIGITAL WALLET SYSTEM ======
 
