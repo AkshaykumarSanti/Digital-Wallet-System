@@ -1,31 +1,100 @@
-## ✅ Phase 10 - Transaction Analytics & Reporting
+# 💳 Digital Wallet System
 
-### 📅 Transaction Timestamps
-Every transaction now stores the exact date and time when it occurred.
+A Python-based Digital Wallet application built using **Object-Oriented Programming (OOP)** concepts.  
+This project simulates a real-world wallet system with user authentication, money transfer, transaction tracking, bank linking, and expense analytics.
 
-Example:
+---
 
-```text
-24-05-2026 18:45:20 | Akshay -> Rahul : ₹300 [SUCCESS]
-```
+## 🚀 Features
 
-### 📊 Expense Analytics Dashboard
+### 👤 User Management
+- User Registration
+- User Login Authentication
+- PIN Verification
+- Multiple User Support
+- Logout System
 
-Users can now view spending insights including:
+---
 
-- 💸 Total Amount Sent
-- ✅ Successful Transactions
-- ❌ Failed Transactions
-- 📈 Transaction Statistics
+### 💰 Wallet Operations
+- Add Money to Wallet
+- Check Wallet Balance
+- Send Money Between Users
+- Balance Validation
+- Cashback System (2%)
 
-### 🚀 New Features Added
+---
 
-✅ Transaction timestamps
+### 🔐 Security
+- PIN-based Authentication
+- Private Balance & PIN using Encapsulation
+- Invalid Input Handling
+- Transaction Status Tracking
 
-✅ Expense analytics dashboard
+---
 
-✅ Spending tracker
+### 📜 Transaction Management
+- Transaction History
+- Transaction Timestamp
+- Success / Failed Transaction Status
+- Persistent Transaction Storage using JSON
 
-✅ Success/Failure transaction statistics
+Transaction details include:
 
-✅ FinTech-style reporting system
+- Date & Time
+- Sender
+- Receiver
+- Amount
+- Status
+
+---
+
+### 🏦 Bank Account Integration
+- Link Bank Account
+- Store Bank Details
+- View Bank Information
+
+---
+
+### 📊 Expense Analytics
+
+Provides:
+
+- Total Amount Sent
+- Successful Transactions Count
+- Failed Transactions Count
+
+---
+
+### 💾 Data Persistence
+
+The application stores data permanently using:
+
+- `users.json`
+- `transactions.json`
+
+Data remains available after restarting the application.
+
+---
+
+## 🛠️ Technologies Used
+
+### Programming Language
+- Python
+
+### Concepts Implemented
+- Object-Oriented Programming
+- Classes & Objects
+- Encapsulation
+- File Handling
+- Exception Handling
+- JSON Database Handling
+
+### Tools
+- Git
+- GitHub
+- VS Code
+
+---
+
+## 📂 Project Structure
