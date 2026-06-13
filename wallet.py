@@ -1,4 +1,70 @@
 from datetime import datetime
+import json
+import os
+
+# ================= DATABASE ================= #
+
+USER_FILE = "users.json"
+TRANSACTION_FILE = "transactions.json"
+
+
+def save_users():
+
+    data = {}
+
+    for name, user in users.items():
+
+        data[name] = {
+            "pin": user.wallet._Wallet__pin,
+            "balance": user.wallet.get_balance(),
+            "bank": None
+        }
+
+        if user.bank_account:
+
+            data[name]["bank"] = {
+                "name": user.bank_account.bank_name,
+                "account": user.bank_account.account_number,
+                "balance": user.bank_account.balance
+            }
+
+
+    with open(USER_FILE,"w") as file:
+        json.dump(data,file,indent=4)
+
+
+
+def load_users():
+
+    if not os.path.exists(USER_FILE):
+        return
+
+
+    with open(USER_FILE,"r") as file:
+
+        data = json.load(file)
+
+
+    for name,info in data.items():
+
+        user = User(
+            name,
+            info["pin"]
+        )
+
+        user.wallet._Wallet__balance = info["balance"]
+
+
+        if info["bank"]:
+
+            user.link_bank_account(
+                info["bank"]["name"],
+                info["bank"]["account"],
+                info["bank"]["balance"]
+            )
+
+
+        users[name] = user
 
 class Wallet:
 
@@ -28,9 +94,35 @@ class Wallet:
 
     def save_transaction_to_file(self, txn):
 
-        with open("transactions.txt", "a") as file:
+        transaction = {
 
-            file.write(str(txn) + "\n")
+            "time": txn.timestamp,
+            "sender": txn.sender,
+            "receiver": txn.receiver,
+            "amount": txn.amount,
+            "status": txn.status
+        }
+
+        data=[]
+
+        if os.path.exists(TRANSACTION_FILE):
+
+            with open(TRANSACTION_FILE,"r") as file:
+
+                data=json.load(file)
+
+
+
+        data.append(transaction)
+
+
+        with open(TRANSACTION_FILE,"w") as file:
+
+            json.dump(
+                data,
+                file,
+                indent=4
+            )
 
     def send_money(self, sender, receiver, amount, pin):
 
@@ -81,49 +173,56 @@ class Wallet:
         for txn in self.transactions:
             print(txn)
 
+
+
     def show_saved_transactions(self):
 
         try:
+            if not os.path.exists(TRANSACTION_FILE):
+                print("\n❌ Transaction File Not Found")
+                return
 
-            with open("transactions.txt", "r") as file:
+            with open(TRANSACTION_FILE, "r") as file:
+                data = json.load(file)
 
-                data = file.read()
+            if data:
+                print("\n📂 Saved Transactions:\n")
+                for txn in data:
+                    time = txn.get("time", "")
+                    sender = txn.get("sender", "")
+                    receiver = txn.get("receiver", "")
+                    amount = txn.get("amount", "")
+                    status = txn.get("status", "")
+                    print(f"{time} | {sender} -> {receiver} : ₹{amount} [{status}]")
+            else:
+                print("\n❌ No Saved Transactions")
 
-                if data:
+        except (FileNotFoundError, json.JSONDecodeError):
+            print("\n❌ Transaction File Not Found or Corrupted")
 
-                    print("\n📂 Saved Transactions:\n")
 
-                    print(data)
+    def show_analytics(self):
 
-                else:
+        total_sent = 0
+        successful = 0
+        failed = 0
 
-                    print("\n❌ No Saved Transactions")
+        for txn in self.transactions:
 
-        except FileNotFoundError:
+            if txn.status == "SUCCESS":
 
-            print("\n❌ Transaction File Not Found")
+                total_sent += txn.amount
+                successful += 1
 
-        def show_analytics(self):
+            else:
 
-            total_sent = 0
-            successful = 0
-            failed = 0
+                failed += 1
 
-            for txn in self.transactions:
 
-                if txn.status == "SUCCESS":
-
-                    total_sent += txn.amount
-                    successful += 1
-
-                else:
-
-                    failed += 1
-
-            print("\n📊 EXPENSE ANALYTICS")
-            print(f"💸 Total Amount Sent: ₹{total_sent}")
-            print(f"✅ Successful Transactions: {successful}")
-            print(f"❌ Failed Transactions: {failed}")
+        print("\n📊 EXPENSE ANALYTICS")
+        print(f"💸 Total Amount Sent: ₹{total_sent}")
+        print(f"✅ Successful Transactions: {successful}")
+        print(f"❌ Failed Transactions: {failed}")
 
 
 class Transaction:
@@ -181,9 +280,7 @@ class User:
 # ================= USERS ================= #
 
 users = {}
-
-users["Akshay"] = User("Akshay", 1234)
-users["Rahul"] = User("Rahul", 5678)
+load_users()
 
 current_user = None
 
@@ -226,6 +323,7 @@ while True:
             pin = int(input("Create 4-Digit PIN: "))
 
             users[name] = User(name, pin)
+            save_users()
 
             print("\n✅ User Registered Successfully")
 
@@ -263,6 +361,7 @@ while True:
             amount = int(input("Enter Amount: ₹"))
 
             current_user.wallet.add_money(amount)
+            save_users()
 
             print("✅ Money Added Successfully")
 
@@ -297,6 +396,7 @@ while True:
             )
 
             print(txn)
+            save_users()
 
         # ================= CHECK BALANCE ================= #
 
@@ -349,6 +449,7 @@ while True:
                 account_number,
                 balance
             )
+            save_users()
 
         # ================= VIEW BANK DETAILS ================= #
 
