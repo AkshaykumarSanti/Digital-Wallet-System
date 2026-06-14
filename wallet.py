@@ -1,4 +1,6 @@
 from datetime import datetime
+from database import Database
+db = Database()
 import json
 import os
 
@@ -140,6 +142,7 @@ class Wallet:
             return txn
 
         # Successful Transaction
+        # Successful Transaction
         if self.__balance >= amount:
 
             self.__balance -= amount
@@ -149,6 +152,27 @@ class Wallet:
             txn.status = "SUCCESS"
 
             self.apply_cashback(amount)
+
+
+            # DATABASE UPDATE
+            db.update_balance(
+                sender.name,
+                sender.wallet.get_balance()
+            )
+
+
+            db.update_balance(
+                receiver.name,
+                receiver.wallet.get_balance()
+            )
+
+
+            db.save_transaction(
+                sender.name,
+                receiver.name,
+                amount,
+                "SUCCESS"
+            )
 
         # Insufficient Balance
         else:
@@ -323,6 +347,11 @@ while True:
             pin = int(input("Create 4-Digit PIN: "))
 
             users[name] = User(name, pin)
+            db.add_user(
+                name,
+                pin,
+                0
+            )
             save_users()
 
             print("\n✅ User Registered Successfully")
@@ -361,6 +390,10 @@ while True:
             amount = int(input("Enter Amount: ₹"))
 
             current_user.wallet.add_money(amount)
+            db.update_balance(
+                current_user.name,
+                current_user.wallet.get_balance()
+            )
             save_users()
 
             print("✅ Money Added Successfully")
